@@ -1,10 +1,13 @@
 package ee.unapuu.herman.puzzlealarmclock;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DialogFragment;
 import android.app.IntentService;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,16 +16,20 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Calendar;
+
 /**
  * Created by toks on 23.05.17.
  */
 
 public class SetAlarmActivity extends Activity {
-    public int alarmHour;
-    public int alarmMinute;
+    public int alarmHour = 9;
+    public int alarmMinute = 0;
     private TextView alarmTextView;
     private TextView alarmTypeTextView;
     private String alarmType;
+
+    private SharedPreferences prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +40,9 @@ public class SetAlarmActivity extends Activity {
 
         alarmTypeTextView = (TextView) findViewById(R.id.alarmTypeDisplay);
         alarmTypeTextView.setText("Rick OR Morty?");
+
+        prefs = getApplicationContext().getSharedPreferences("alarmPrefs", Context.MODE_PRIVATE);
+
     }
 
     public void openTimePicker(View view) {
@@ -80,6 +90,18 @@ public class SetAlarmActivity extends Activity {
 
     public void setAlarm(View view) {
         //todo: validation/defaults, set alarm time and type
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("alarmHour", alarmHour);
+        editor.putInt("alarmMinute", alarmMinute);
+        editor.apply();
+        final java.util.Calendar c = java.util.Calendar.getInstance();
+        int hour = c.get(java.util.Calendar.HOUR_OF_DAY);
+        int minute = c.get(java.util.Calendar.MINUTE);
+        //c.set(Calendar.HOUR_OF_DAY, alarmHour);
+        //c.set(Calendar.MINUTE, alarmMinute);
+
+
+
         finish();
     }
 }
