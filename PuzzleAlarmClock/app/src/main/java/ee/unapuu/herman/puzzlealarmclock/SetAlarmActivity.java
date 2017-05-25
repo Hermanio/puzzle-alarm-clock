@@ -5,8 +5,10 @@ import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DialogFragment;
 import android.app.IntentService;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -84,8 +86,11 @@ public class SetAlarmActivity extends Activity {
         Log.d("time", Integer.toString(hour)+":"+ Integer.toString(minute));
         alarmHour = hour;
         alarmMinute = minute;
-        alarmTextView.setText(hour+":"+minute);
-
+        if (alarmMinute < 9) {
+            alarmTextView.setText(alarmHour + ":0" + alarmMinute);
+        } else {
+            alarmTextView.setText(alarmHour + ":" + alarmMinute);
+        }
     }
 
     public void setAlarm(View view) {
@@ -100,8 +105,43 @@ public class SetAlarmActivity extends Activity {
         //c.set(Calendar.HOUR_OF_DAY, alarmHour);
         //c.set(Calendar.MINUTE, alarmMinute);
 
+        if (hour < alarmHour) {
+            //alarm is today in evening, just apply it for today!
+            Log.d("test", "alarm today in evening");
+            c.set(Calendar.HOUR_OF_DAY, alarmHour);
+            c.set(Calendar.MINUTE, alarmMinute);
+        } else if (hour == alarmHour) {
+            //alarm is in the same hour, check minutes to be sure if it is today or tomorrow
+            if (minute <= alarmMinute) {
+                //today, carry on
+                c.set(Calendar.HOUR_OF_DAY, alarmHour);
+                c.set(Calendar.MINUTE, alarmMinute);
+                Log.d("test", "alarm today in evening");
 
+            } else {
+                c.add(Calendar.DAY_OF_MONTH, 1);
+                c.set(Calendar.HOUR_OF_DAY, alarmHour);
+                c.set(Calendar.MINUTE, alarmMinute);
+                Log.d("test", "alarm tomorrow");
+
+            }
+        } else {
+            //alarm is obviously during the next day
+            c.add(Calendar.DAY_OF_MONTH, 1);
+            c.set(Calendar.HOUR_OF_DAY, alarmHour);
+            c.set(Calendar.MINUTE, alarmMinute);
+            Log.d("test", "alarm tomorrow");
+
+        }
+        fireAlarm(c);
 
         finish();
+    }
+
+    public void fireAlarm(Calendar alarmTime) {
+        AlarmManager alarmMgr = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlarmTarget.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        alarmMgr.set(AlarmManager.RTC_WAKEUP, alarmTime.getTimeInMillis(), pendingIntent);
     }
 }
