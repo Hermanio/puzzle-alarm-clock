@@ -22,16 +22,16 @@
         </activity>
         <activity android:name=".SetAlarmActivity">
         </activity>
-        <activity android:name=".WhoIsTalkingActivity">
+        <activity android:name=".alarmtypes.WhoIsTalkingActivity">
         </activity>
-        <activity android:name=".ShakeShakeShakeActivity">
+        <activity android:name=".alarmtypes.ShakeShakeShakeActivity">
         </activity>
-        <activity android:name=".TurnUpTheLightsActivity">
+        <activity android:name=".alarmtypes.TurnUpTheLightsActivity">
         </activity>
-        <activity android:name=".WalkAroundActivity">
+        <activity android:name=".alarmtypes.WalkAroundActivity">
         </activity>
 
-        <service android:name=".ActivityRecognizedService" />
+        <service android:name=".service.ActivityRecognizedService" />
     </application>
 
 </manifest>

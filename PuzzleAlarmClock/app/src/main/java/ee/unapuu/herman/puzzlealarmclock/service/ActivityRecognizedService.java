@@ -1,4 +1,4 @@
-package ee.unapuu.herman.puzzlealarmclock;
+package ee.unapuu.herman.puzzlealarmclock.service;
 
 import android.app.IntentService;
 import android.content.Intent;
@@ -12,6 +12,8 @@ import com.google.android.gms.location.ActivityRecognitionResult;
 import com.google.android.gms.location.DetectedActivity;
 
 import java.util.List;
+
+import ee.unapuu.herman.puzzlealarmclock.R;
 
 /**
  * Created by toks on 26.05.17.

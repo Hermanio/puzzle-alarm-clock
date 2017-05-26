@@ -1,4 +1,4 @@
-package ee.unapuu.herman.puzzlealarmclock;
+package ee.unapuu.herman.puzzlealarmclock.alarmtypes;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.seismic.ShakeDetector;
+
+import ee.unapuu.herman.puzzlealarmclock.R;
 
 /**
  * Created by toks on 26.05.17.

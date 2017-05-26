@@ -1,4 +1,4 @@
-package ee.unapuu.herman.puzzlealarmclock;
+package ee.unapuu.herman.puzzlealarmclock.alarmtypes;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+
+import ee.unapuu.herman.puzzlealarmclock.R;
 
 /**
  * Created by toks on 26.05.17.

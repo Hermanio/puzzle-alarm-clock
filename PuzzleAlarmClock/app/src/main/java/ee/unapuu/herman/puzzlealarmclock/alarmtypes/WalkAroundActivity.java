@@ -1,4 +1,4 @@
-package ee.unapuu.herman.puzzlealarmclock;
+package ee.unapuu.herman.puzzlealarmclock.alarmtypes;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.ActivityRecognition;
+
+import ee.unapuu.herman.puzzlealarmclock.R;
+import ee.unapuu.herman.puzzlealarmclock.service.ActivityRecognizedService;
 
 /**
  * Created by toks on 26.05.17.
