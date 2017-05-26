@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         //debugging
-        Intent intent = new Intent(MainActivity.this, ShakeShakeShakeActivity.class);
+        Intent intent = new Intent(MainActivity.this, TurnUpTheLightsActivity.class);
         startActivity(intent);
     }
 

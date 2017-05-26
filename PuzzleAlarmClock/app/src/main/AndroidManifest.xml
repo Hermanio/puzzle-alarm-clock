@@ -25,6 +25,8 @@
         </activity>
         <activity android:name=".ShakeShakeShakeActivity">
         </activity>
+        <activity android:name=".TurnUpTheLightsActivity">
+        </activity>
     </application>
 
 </manifest>
