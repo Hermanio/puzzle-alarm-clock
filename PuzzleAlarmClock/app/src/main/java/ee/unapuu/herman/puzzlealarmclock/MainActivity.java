@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         //debugging
-        Intent intent = new Intent(MainActivity.this, TurnUpTheLightsActivity.class);
+        Intent intent = new Intent(MainActivity.this, WalkAroundActivity.class);
         startActivity(intent);
     }
 
