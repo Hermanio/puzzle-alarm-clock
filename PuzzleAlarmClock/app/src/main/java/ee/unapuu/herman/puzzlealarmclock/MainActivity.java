@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import ee.unapuu.herman.puzzlealarmclock.alarmtypes.TrueOrFalseActivity;
 import ee.unapuu.herman.puzzlealarmclock.alarmtypes.WalkAroundActivity;
 
 public class MainActivity extends Activity {
@@ -24,7 +25,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         //debugging
-        Intent intent = new Intent(MainActivity.this, WalkAroundActivity.class);
+        Intent intent = new Intent(MainActivity.this, TrueOrFalseActivity.class);
         startActivity(intent);
     }
 
