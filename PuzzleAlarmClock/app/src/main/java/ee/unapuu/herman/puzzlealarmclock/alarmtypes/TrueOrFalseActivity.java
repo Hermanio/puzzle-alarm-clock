@@ -2,11 +2,13 @@ package ee.unapuu.herman.puzzlealarmclock.alarmtypes;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -105,7 +107,11 @@ startPenalty();
         statementText.setVisibility(View.GONE);
         trueButton.setVisibility(View.GONE);
         falseButton.setVisibility(View.GONE);
-        findViewById(R.id.wrongTextView).setVisibility(View.VISIBLE);
+        TextView wrongText = (TextView) findViewById(R.id.wrongTextView);
+        wrongText.setVisibility(View.VISIBLE);
+        wrongText.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake_anim));
+        getWindow().getDecorView().setBackgroundColor(Color.rgb(252, 173, 103));
+
 
         //replace with proper audio stop and event
         try {

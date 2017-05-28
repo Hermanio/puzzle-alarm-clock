@@ -32,7 +32,8 @@
         </activity>
         <activity android:name=".alarmtypes.TrueOrFalseActivity">
         </activity>
-
+        <activity android:name=".alarmtypes.SwipingActivity">
+        </activity>
         <service android:name=".service.ActivityRecognizedService" />
     </application>
 
