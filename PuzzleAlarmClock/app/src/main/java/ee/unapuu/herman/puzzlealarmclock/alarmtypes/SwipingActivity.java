@@ -3,7 +3,6 @@ package ee.unapuu.herman.puzzlealarmclock.alarmtypes;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.view.MotionEventCompat;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -61,11 +60,14 @@ public class SwipingActivity extends Activity implements View.OnTouchListener {
         if (swipeDirection.equals(nextSwipeAction)) {
             correctSwipeCounter++;
             if (correctSwipeCounter >= SWIPE_ACTION_THRESHOLD) {
-                stopAlarm();
+                stopAlarmSuccessfully();
             }
             animateResult(true);
             setNextSwipeAction();
         } else {
+            if (correctSwipeCounter <= -SWIPE_ACTION_THRESHOLD) {
+                stopAlarmWithPenalty();
+            }
             animateResult(false);
             correctSwipeCounter--;
         }
@@ -80,7 +82,14 @@ public class SwipingActivity extends Activity implements View.OnTouchListener {
         directionTextView.setText(nextSwipeAction);
     }
 
-    private void stopAlarm() {
+    private void stopAlarmSuccessfully() {
+        finish();
+    }
+
+    private void stopAlarmWithPenalty() {
+        //stop sound here
+        //start penalty alarm
+
         finish();
     }
 

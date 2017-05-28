@@ -38,7 +38,7 @@ public class TurnUpTheLightsActivity extends Activity implements SensorEventList
         float lightSensorReading = event.values[0];
         if (lightSensorReading > LIGHT_THRESHOLD) {
             //obviously pointed to the source
-            stopAlarm();
+            stopAlarmSuccessfully();
         }
     }
 
@@ -61,7 +61,7 @@ public class TurnUpTheLightsActivity extends Activity implements SensorEventList
         mSensorManager.unregisterListener(this);
     }
 
-    private void stopAlarm() {
+    private void stopAlarmSuccessfully() {
         music.stop();
         //clear alarms here
 

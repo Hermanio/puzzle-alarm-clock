@@ -1,6 +1,7 @@
 package ee.unapuu.herman.puzzlealarmclock.alarmtypes;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import ee.unapuu.herman.puzzlealarmclock.R;
+import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
 
 /**
  * Created by toks on 26.05.17.
@@ -91,17 +93,18 @@ public class WhoIsTalkingActivity extends Activity {
                     mp.seekTo(0);
                     mp.start();
                 } else {
-                    stopAlarm();
+                    stopAlarmSuccessfully();
                 }
             }
         });
         dialog.start();
     }
 
-    private void stopAlarm() {
+    private void stopAlarmSuccessfully() {
         dialog.stop();
         //clear alarms here
-
+        Intent i = new Intent(this, AlarmEndActivity.class);
+        startActivity(i);
         finish();
     }
 
@@ -111,14 +114,14 @@ public class WhoIsTalkingActivity extends Activity {
         switch (view.getId()) {
             case R.id.rickImageView:
                 if (correctAnswer.equals("Rick")) {
-                    stopAlarm();
+                    stopAlarmSuccessfully();
                 } else {
                     startPenalty();
                 }
                 break;
             case R.id.mortyImageView:
                 if (correctAnswer.equals("Morty")) {
-                    stopAlarm();
+                    stopAlarmSuccessfully();
                 } else {
                     startPenalty();
                 }

@@ -2,6 +2,7 @@ package ee.unapuu.herman.puzzlealarmclock.alarmtypes;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.squareup.seismic.ShakeDetector;
 
 import ee.unapuu.herman.puzzlealarmclock.R;
+import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
 
 /**
  * Created by toks on 26.05.17.
@@ -47,7 +49,7 @@ public class ShakeShakeShakeActivity extends Activity implements ShakeDetector.L
         shakeCount++;
         if (shakeCount >= SHAKE_TARGET) {
             //shaking done, stop this
-            stopAlarm();
+            stopAlarmSuccessfully();
         } else {
             getWindow().getDecorView().setBackgroundColor(Color.rgb(255, 255-(25*shakeCount), 255-(25*shakeCount)));
             shakeMeTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 36 + shakeCount*3);
@@ -56,10 +58,12 @@ public class ShakeShakeShakeActivity extends Activity implements ShakeDetector.L
         Toast.makeText(this, "Don't shake me, bro! ", Toast.LENGTH_SHORT).show();
     }
 
-    private void stopAlarm() {
+    private void stopAlarmSuccessfully() {
         music.stop();
         //clear alarms here
 
+        Intent i = new Intent(this, AlarmEndActivity.class);
+        startActivity(i);
         finish();
     }
 

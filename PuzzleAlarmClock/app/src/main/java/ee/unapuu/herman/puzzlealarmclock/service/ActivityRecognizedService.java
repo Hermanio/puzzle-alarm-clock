@@ -1,6 +1,7 @@
 package ee.unapuu.herman.puzzlealarmclock.service;
 
 import android.app.IntentService;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
@@ -14,6 +15,9 @@ import com.google.android.gms.location.DetectedActivity;
 import java.util.List;
 
 import ee.unapuu.herman.puzzlealarmclock.R;
+import ee.unapuu.herman.puzzlealarmclock.alarmtypes.WalkAroundActivity;
+
+import static android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP;
 
 /**
  * Created by toks on 26.05.17.
@@ -21,7 +25,12 @@ import ee.unapuu.herman.puzzlealarmclock.R;
 
 public class ActivityRecognizedService extends IntentService {
 
-    private final int ACTIVITY_THRESHOLD = 25; //confidence rating limit
+    private final int ACTIVITY_THRESHOLD = 1; //confidence rating limit
+
+
+
+    private boolean isWalking = false;
+    private Context applicationContext;
 
     public ActivityRecognizedService() {
         super("ActivityRecognizedService");
@@ -64,7 +73,10 @@ public class ActivityRecognizedService extends IntentService {
                         builder.setSmallIcon( R.mipmap.ic_launcher );
                         builder.setContentTitle( getString( R.string.app_name ) );
                         NotificationManagerCompat.from(this).notify(0, builder.build());
-
+                        isWalking = true;
+                        Intent i = new Intent(this, WalkAroundActivity.class);
+                        i.addFlags (FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(i);
 
                     }
                     break;
@@ -75,6 +87,10 @@ public class ActivityRecognizedService extends IntentService {
                 }
             }
         }
+    }
+
+    public boolean isWalking() {
+        return isWalking;
     }
 
 }

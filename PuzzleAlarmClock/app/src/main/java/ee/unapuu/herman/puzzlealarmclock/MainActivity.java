@@ -26,8 +26,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         //debugging
-        Intent intent = new Intent(MainActivity.this, SwipingActivity.class);
-        startActivity(intent);
+        Intent intent = new Intent(MainActivity.this, WalkAroundActivity.class);
+        //startActivity(intent);
     }
 
     @Override
@@ -63,5 +63,10 @@ public class MainActivity extends Activity {
                 alarmInfoTextView.setText(alarmHour + ":" + alarmMinute);
             }
         }
+    }
+
+    public void viewAlarmTypes(View view) {
+        Intent i = new Intent(this, AlarmDemoActivity.class);
+        startActivity(i);
     }
 }
