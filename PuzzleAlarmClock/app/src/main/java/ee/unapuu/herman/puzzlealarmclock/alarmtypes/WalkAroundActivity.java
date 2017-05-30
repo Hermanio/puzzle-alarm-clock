@@ -12,6 +12,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.ActivityRecognition;
 
+import ee.unapuu.herman.puzzlealarmclock.AlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.R;
 import ee.unapuu.herman.puzzlealarmclock.service.ActivityRecognizedService;
 
@@ -19,7 +20,7 @@ import ee.unapuu.herman.puzzlealarmclock.service.ActivityRecognizedService;
  * Created by toks on 26.05.17.
  */
 
-public class WalkAroundActivity extends Activity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class WalkAroundActivity extends AlarmActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     public GoogleApiClient mApiClient;
 
@@ -28,6 +29,8 @@ public class WalkAroundActivity extends Activity implements GoogleApiClient.Conn
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        goFullScreen();
+
         setContentView(R.layout.activity_walk_around);
 
         mApiClient = new GoogleApiClient.Builder(this)

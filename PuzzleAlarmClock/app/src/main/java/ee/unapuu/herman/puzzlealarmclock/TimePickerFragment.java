@@ -34,6 +34,6 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         // Do something with the time chosen by the user
         //SetAlarmActivity.setAlarmTime(hourOfDay, minute);
 
-        ((SetAlarmActivity) getActivity()).setAlarmTime(hourOfDay, minute);
+        ((MainActivity) getActivity()).setAlarmTime(hourOfDay, minute);
     }
 }

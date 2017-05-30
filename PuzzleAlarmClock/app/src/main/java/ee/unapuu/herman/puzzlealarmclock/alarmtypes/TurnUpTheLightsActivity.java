@@ -10,13 +10,14 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 
+import ee.unapuu.herman.puzzlealarmclock.AlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.R;
 
 /**
  * Created by toks on 26.05.17.
  */
 
-public class TurnUpTheLightsActivity extends Activity implements SensorEventListener {
+public class TurnUpTheLightsActivity extends AlarmActivity implements SensorEventListener {
     private SensorManager mSensorManager;
     private Sensor lightSensor;
     private float LIGHT_THRESHOLD = 2500.0f;
@@ -26,6 +27,8 @@ public class TurnUpTheLightsActivity extends Activity implements SensorEventList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        goFullScreen();
+
         setContentView(R.layout.activity_turn_up_the_lights);
         playAlarmMusic();
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);

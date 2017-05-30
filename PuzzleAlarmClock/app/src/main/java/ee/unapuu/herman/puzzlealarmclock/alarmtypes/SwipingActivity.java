@@ -1,6 +1,7 @@
 package ee.unapuu.herman.puzzlealarmclock.alarmtypes;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.util.Log;
@@ -11,14 +12,16 @@ import android.widget.TextView;
 
 import java.util.Random;
 
+import ee.unapuu.herman.puzzlealarmclock.AlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.R;
+import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
 import ee.unapuu.herman.puzzlealarmclock.misc.OnSwipeListener;
 
 /**
  * Created by toks on 28.05.17.
  */
 
-public class SwipingActivity extends Activity implements View.OnTouchListener {
+public class SwipingActivity extends AlarmActivity implements View.OnTouchListener {
     private final String TAG = "test";
     private final int SWIPE_ACTION_THRESHOLD = 10;
     private String nextSwipeAction;
@@ -33,6 +36,8 @@ public class SwipingActivity extends Activity implements View.OnTouchListener {
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        goFullScreen();
+
         setContentView(R.layout.activity_swiping);
         activityLayout = (ConstraintLayout) findViewById(R.id.swipingActivityLayout);
         gestureDetector = new GestureDetector(this, new OnSwipeListener() {
@@ -61,9 +66,11 @@ public class SwipingActivity extends Activity implements View.OnTouchListener {
             correctSwipeCounter++;
             if (correctSwipeCounter >= SWIPE_ACTION_THRESHOLD) {
                 stopAlarmSuccessfully();
+            } else {
+                animateResult(true);
+                setNextSwipeAction();
             }
-            animateResult(true);
-            setNextSwipeAction();
+
         } else {
             if (correctSwipeCounter <= -SWIPE_ACTION_THRESHOLD) {
                 stopAlarmWithPenalty();
@@ -83,6 +90,8 @@ public class SwipingActivity extends Activity implements View.OnTouchListener {
     }
 
     private void stopAlarmSuccessfully() {
+        Intent i = new Intent(this, AlarmEndActivity.class);
+        startActivity(i);
         finish();
     }
 

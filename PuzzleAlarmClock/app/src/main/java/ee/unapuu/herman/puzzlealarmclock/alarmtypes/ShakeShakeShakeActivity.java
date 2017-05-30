@@ -10,12 +10,15 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.seismic.ShakeDetector;
 
+import ee.unapuu.herman.puzzlealarmclock.AlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.R;
 import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
 
@@ -23,23 +26,25 @@ import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
  * Created by toks on 26.05.17.
  */
 
-public class ShakeShakeShakeActivity extends Activity implements ShakeDetector.Listener {
+public class ShakeShakeShakeActivity extends AlarmActivity implements ShakeDetector.Listener {
 
     private TextView shakeMeTextView;
     private MediaPlayer music;
     private int shakeCount = 0;
     private final int SHAKE_TARGET = 10;
 
+    private ShakeDetector sd;
+
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shake_me);
+        goFullScreen();
 
         shakeMeTextView = (TextView) findViewById(R.id.shakeMeTextView);
         shakeMeTextView.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fast_shake_animation));
 
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        ShakeDetector sd = new ShakeDetector(this);
+        sd = new ShakeDetector(this);
         sd.start(sensorManager);
 
         playAlarmMusic();
@@ -61,6 +66,8 @@ public class ShakeShakeShakeActivity extends Activity implements ShakeDetector.L
     private void stopAlarmSuccessfully() {
         music.stop();
         //clear alarms here
+
+        sd.stop();
 
         Intent i = new Intent(this, AlarmEndActivity.class);
         startActivity(i);

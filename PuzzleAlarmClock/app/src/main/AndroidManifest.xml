@@ -22,21 +22,29 @@
         </activity>
         <activity android:name=".SetAlarmActivity">
         </activity>
-        <activity android:name=".alarmtypes.WhoIsTalkingActivity">
+        <activity android:name=".alarmtypes.WhoIsTalkingActivity"
+            android:showOnLockScreen="true">
         </activity>
-        <activity android:name=".alarmtypes.ShakeShakeShakeActivity">
+        <activity android:name=".alarmtypes.ShakeShakeShakeActivity"
+            android:showOnLockScreen="true">
         </activity>
-        <activity android:name=".alarmtypes.TurnUpTheLightsActivity">
+        <activity android:name=".alarmtypes.TurnUpTheLightsActivity"
+            android:showOnLockScreen="true">
         </activity>
-        <activity android:name=".alarmtypes.WalkAroundActivity">
+        <activity android:name=".alarmtypes.WalkAroundActivity"
+            android:showOnLockScreen="true">
         </activity>
-        <activity android:name=".alarmtypes.TrueOrFalseActivity">
+        <activity android:name=".alarmtypes.TrueOrFalseActivity"
+            android:showOnLockScreen="true">
         </activity>
-        <activity android:name=".alarmtypes.SwipingActivity">
+        <activity android:name=".alarmtypes.SwipingActivity"
+            android:showOnLockScreen="true">
         </activity>
-        <activity android:name=".alarmresult.AlarmEndActivity">
+        <activity android:name=".alarmresult.AlarmEndActivity"
+            android:showOnLockScreen="true">
         </activity>
-        <activity android:name=".alarmresult.PenaltyAlarmActivity">
+        <activity android:name=".alarmresult.PenaltyAlarmActivity"
+            android:showOnLockScreen="true">
         </activity>
         <activity android:name=".AlarmDemoActivity">
         </activity>

@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import ee.unapuu.herman.puzzlealarmclock.AlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.R;
 import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
 
@@ -16,7 +17,7 @@ import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
  * Created by toks on 26.05.17.
  */
 
-public class WhoIsTalkingActivity extends Activity {
+public class WhoIsTalkingActivity extends AlarmActivity {
 
     private String correctAnswer;
     private MediaPlayer dialog;
@@ -29,6 +30,8 @@ public class WhoIsTalkingActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        goFullScreen();
+
         setContentView(R.layout.activity_who_is_talking);
 
         rickImage = (ImageView) findViewById(R.id.rickImageView);

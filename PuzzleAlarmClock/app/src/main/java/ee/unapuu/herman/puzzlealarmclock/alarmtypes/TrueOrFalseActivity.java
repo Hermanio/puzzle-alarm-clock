@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+import ee.unapuu.herman.puzzlealarmclock.AlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.R;
 import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
 import ee.unapuu.herman.puzzlealarmclock.alarmresult.PenaltyAlarmActivity;
@@ -24,7 +25,7 @@ import ee.unapuu.herman.puzzlealarmclock.alarmresult.PenaltyAlarmActivity;
  * Created by toks on 28.05.17.
  */
 
-public class TrueOrFalseActivity extends Activity {
+public class TrueOrFalseActivity extends AlarmActivity {
     private TextView statementText;
     private Button trueButton;
     private Button falseButton;
@@ -36,6 +37,8 @@ public class TrueOrFalseActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        goFullScreen();
+
         setContentView(R.layout.activity_true_or_false);
 
         statementText = (TextView) findViewById(R.id.statementTextView);

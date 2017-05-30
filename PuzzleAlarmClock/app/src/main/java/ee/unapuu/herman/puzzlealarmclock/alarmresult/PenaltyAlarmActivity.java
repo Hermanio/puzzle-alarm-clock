@@ -25,6 +25,8 @@ public class PenaltyAlarmActivity extends Activity {
         wrongText.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake_anim));
         getWindow().getDecorView().setBackgroundColor(Color.rgb(252, 173, 103));
 
+        AlarmClearingHelper.clearAlarm(getApplicationContext());
+
         Handler handler = new Handler();
 
         handler.postDelayed(new Runnable() {
