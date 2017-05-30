@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -121,7 +122,7 @@ public class MainActivity extends Activity {
         alarmMinute = sharedPref.getInt("alarmMinute", -1);
 
         if (alarmHour == -1 || alarmMinute == -1) {
-            alarmInfoTextView.setText("No alarm set");
+            alarmInfoTextView.setText("No alarm set!");
         } else {
             final java.util.Calendar c = java.util.Calendar.getInstance();
             int hour = c.get(java.util.Calendar.HOUR_OF_DAY);
