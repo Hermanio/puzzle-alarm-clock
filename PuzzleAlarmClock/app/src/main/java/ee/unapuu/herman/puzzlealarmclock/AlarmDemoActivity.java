@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
+import ee.unapuu.herman.puzzlealarmclock.alarmresult.PenaltyAlarmActivity;
+import ee.unapuu.herman.puzzlealarmclock.alarmresult.ScreamingSunActivity;
 import ee.unapuu.herman.puzzlealarmclock.alarmtypes.ShakeShakeShakeActivity;
 import ee.unapuu.herman.puzzlealarmclock.alarmtypes.SwipingActivity;
 import ee.unapuu.herman.puzzlealarmclock.alarmtypes.TrueOrFalseActivity;
@@ -28,6 +31,9 @@ public class AlarmDemoActivity extends Activity implements View.OnClickListener{
         findViewById(R.id.turnUpTheLightsDemo).setOnClickListener(this);
         findViewById(R.id.walkAroundDemo).setOnClickListener(this);
         findViewById(R.id.rickOrMortyDemo).setOnClickListener(this);
+        findViewById(R.id.alarmEnd).setOnClickListener(this);
+        findViewById(R.id.penaltyAlarmEnd).setOnClickListener(this);
+        findViewById(R.id.altPenaltyAlarmEnd).setOnClickListener(this);
 
     }
 
@@ -57,6 +63,18 @@ public class AlarmDemoActivity extends Activity implements View.OnClickListener{
                 break;
             case R.id.rickOrMortyDemo:
                 i = new Intent(this, WhoIsTalkingActivity.class);
+                startActivity(i);
+                break;
+            case R.id.alarmEnd:
+                i = new Intent(this, AlarmEndActivity.class);
+                startActivity(i);
+                break;
+            case R.id.penaltyAlarmEnd:
+                i = new Intent(this, PenaltyAlarmActivity.class);
+                startActivity(i);
+                break;
+            case R.id.altPenaltyAlarmEnd:
+                i = new Intent(this, ScreamingSunActivity.class);
                 startActivity(i);
                 break;
         }

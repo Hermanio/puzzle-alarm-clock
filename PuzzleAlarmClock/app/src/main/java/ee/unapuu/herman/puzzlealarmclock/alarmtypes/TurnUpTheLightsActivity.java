@@ -2,12 +2,15 @@ package ee.unapuu.herman.puzzlealarmclock.alarmtypes;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.util.Log;
+import android.widget.TextView;
 
 import ee.unapuu.herman.puzzlealarmclock.AlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.R;
@@ -21,7 +24,8 @@ public class TurnUpTheLightsActivity extends AlarmActivity implements SensorEven
     private SensorManager mSensorManager;
     private Sensor lightSensor;
     private float LIGHT_THRESHOLD = 2500.0f;
-
+    private ConstraintLayout viewLayout;
+    private TextView shineALightTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,19 +33,27 @@ public class TurnUpTheLightsActivity extends AlarmActivity implements SensorEven
         goFullScreen();
 
         setContentView(R.layout.activity_turn_up_the_lights);
-        startAudioResource(R.raw.shakeshakeshake);
+        startAudioResource(R.raw.shinealightloop);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         lightSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        viewLayout = (ConstraintLayout) findViewById(R.id.lightsLayout);
+        shineALightTextView = (TextView) findViewById(R.id.shineALightTextView);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
         Log.d("sensor", Float.toString(event.values[0]));
         float lightSensorReading = event.values[0];
+        int adjustedLightValue;
         if (lightSensorReading > LIGHT_THRESHOLD) {
             //obviously pointed to the source
             stopAlarmSuccessfully();
+        } else {
+            adjustedLightValue = Math.round(lightSensorReading / 10);
+            viewLayout.setBackgroundColor(Color.rgb(adjustedLightValue, adjustedLightValue, adjustedLightValue));
+            shineALightTextView.setTextColor(Color.rgb(255-adjustedLightValue,255-adjustedLightValue,255-adjustedLightValue));
         }
+
     }
 
     @Override

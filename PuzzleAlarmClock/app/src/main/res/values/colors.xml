@@ -14,5 +14,9 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
     <color name="screamingSunBackground">#f57f17</color>
+    <color name="unacceptableBackground">#ffea00</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
 
 </resources>

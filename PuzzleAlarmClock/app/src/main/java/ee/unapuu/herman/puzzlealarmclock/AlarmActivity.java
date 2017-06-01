@@ -4,11 +4,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
+
+import java.io.IOException;
+import java.util.Random;
 
 /**
  * Created by toks on 30.05.17.
@@ -29,6 +35,7 @@ public class AlarmActivity extends Activity {
         Toast.makeText(this, "oh no you aint quittin me", Toast.LENGTH_SHORT).show();
     }
 
+
     protected void goFullScreen() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON |
@@ -43,14 +50,25 @@ public class AlarmActivity extends Activity {
     public void startAudioResource(int audioResourceId) {
 
         if (mediaPlayer == null) {
-            mediaPlayer = MediaPlayer.create(this, audioResourceId);
+            mediaPlayer = new MediaPlayer();
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
+           // mediaPlayer = MediaPlayer.create(this, audioResourceId);
+
             mediaPlayer.setLooping(true);
-            //mediaPlayer.start();
+            try {
+                mediaPlayer.setDataSource(getApplicationContext(), Uri.parse("android.resource://ee.unapuu.herman.puzzlealarmclock/" + audioResourceId));
+                mediaPlayer.prepare();
+            } catch (IOException e) {
+                Log.d("test", "URI fucked up");
+                e.printStackTrace();
+            }
         }
 
         if (!mediaPlayer.isPlaying()) {
             mediaPlayer.start();
         }
+
+        setVolumeToMax();
     }
 
     public void stopAudioResource() {
@@ -58,12 +76,24 @@ public class AlarmActivity extends Activity {
         mediaPlayer = null;
     }
 
+    //with this the user is unable to turn down the alarm volume
     private void setVolumeToMax() {
 
-        //todo: figure out if looping this every x seconds is a good idea
+        final Handler h = new Handler();
+        final int delay = 100; //milliseconds
 
-        AudioManager am = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
-        //int originalVolume = am.getStreamVolume(AudioManager.USE_DEFAULT_STREAM_TYPE);
-        am.setStreamVolume(AudioManager.STREAM_MUSIC, am.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
+        h.postDelayed(new Runnable(){
+            public void run(){
+                AudioManager am = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+                am.setStreamVolume(AudioManager.STREAM_ALARM, am.getStreamMaxVolume(AudioManager.STREAM_ALARM), 0);
+                h.postDelayed(this, delay);
+            }
+        }, delay);
+    }
+
+    public int getGenericAudioResource() {
+        int[] audioTracks = {R.raw.nuke, R.raw.deathmetal, R.raw.shinealightloop};
+        int index = new Random().nextInt(audioTracks.length);
+        return audioTracks[index];
     }
 }

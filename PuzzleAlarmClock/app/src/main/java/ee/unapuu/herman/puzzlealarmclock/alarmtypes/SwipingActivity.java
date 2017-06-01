@@ -60,7 +60,7 @@ public class SwipingActivity extends AlarmActivity implements View.OnTouchListen
 
             directionTextView.setText(nextSwipeAction);
         }
-        startAudioResource(R.raw.shakeshakeshake);
+        startAudioResource(getGenericAudioResource());
 
     }
 

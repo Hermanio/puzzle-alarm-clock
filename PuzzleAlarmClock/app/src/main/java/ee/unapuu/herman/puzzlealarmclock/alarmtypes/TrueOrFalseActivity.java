@@ -44,7 +44,7 @@ public class TrueOrFalseActivity extends AlarmActivity {
         initialiseQuestions();
         chooseRandomQuestion();
 
-        startAudioResource(R.raw.shakeshakeshake);
+        startAudioResource(getGenericAudioResource());
     }
 
 

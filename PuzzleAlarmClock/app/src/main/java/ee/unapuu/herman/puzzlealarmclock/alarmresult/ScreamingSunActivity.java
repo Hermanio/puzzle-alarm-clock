@@ -21,6 +21,7 @@ public class ScreamingSunActivity extends AlarmActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        goFullScreen();
         setContentView(R.layout.activity_screaming_sun);
 
         startAudioResource(R.raw.screamingsun);
@@ -30,6 +31,8 @@ public class ScreamingSunActivity extends AlarmActivity {
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 stopAudioResource();
+                AlarmClearingHelper.clearAlarm(getApplicationContext());
+                AlarmClearingHelper.clearAlarmEvents(getApplicationContext());
                 finish();
             }
         }, SCREAMING_SUN_DURATION);
