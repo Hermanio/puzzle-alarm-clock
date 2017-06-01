@@ -1,6 +1,5 @@
 package ee.unapuu.herman.puzzlealarmclock.alarmtypes;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -15,6 +14,7 @@ import java.util.Random;
 import ee.unapuu.herman.puzzlealarmclock.AlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.R;
 import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
+import ee.unapuu.herman.puzzlealarmclock.alarmresult.PenaltyAlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.misc.OnSwipeListener;
 
 /**
@@ -34,11 +34,12 @@ public class SwipingActivity extends AlarmActivity implements View.OnTouchListen
     private TextView directionTextView;
 
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         goFullScreen();
-
         setContentView(R.layout.activity_swiping);
+
         activityLayout = (ConstraintLayout) findViewById(R.id.swipingActivityLayout);
         gestureDetector = new GestureDetector(this, new OnSwipeListener() {
             @Override
@@ -51,9 +52,27 @@ public class SwipingActivity extends AlarmActivity implements View.OnTouchListen
 
         activityLayout.setOnTouchListener(this);
         directionTextView = (TextView) findViewById(R.id.swipeDirectionTextView);
-        setNextSwipeAction();
+        if (savedInstanceState == null) {
+            setNextSwipeAction();
+        } else {
+            correctSwipeCounter = savedInstanceState.getInt("correctSwipeCounter");
+            nextSwipeAction = savedInstanceState.getString("nextSwipeAction");
+
+            directionTextView.setText(nextSwipeAction);
+        }
+        startAudioResource(R.raw.shakeshakeshake);
+
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        activityLayout.setOnTouchListener(null);
+        gestureDetector = null;
+
+        outState.putString("nextSwipeAction", nextSwipeAction);
+        outState.putInt("correctSwipeCounter", correctSwipeCounter);
+    }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -76,6 +95,7 @@ public class SwipingActivity extends AlarmActivity implements View.OnTouchListen
                 stopAlarmWithPenalty();
             }
             animateResult(false);
+            setNextSwipeAction();
             correctSwipeCounter--;
         }
     }
@@ -90,15 +110,17 @@ public class SwipingActivity extends AlarmActivity implements View.OnTouchListen
     }
 
     private void stopAlarmSuccessfully() {
+        stopAudioResource();
+
         Intent i = new Intent(this, AlarmEndActivity.class);
         startActivity(i);
         finish();
     }
 
     private void stopAlarmWithPenalty() {
-        //stop sound here
-        //start penalty alarm
-
+        stopAudioResource();
+        Intent i = new Intent(this, PenaltyAlarmActivity.class);
+        startActivity(i);
         finish();
     }
 

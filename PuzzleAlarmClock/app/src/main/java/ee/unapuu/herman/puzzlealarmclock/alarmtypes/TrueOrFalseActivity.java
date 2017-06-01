@@ -1,15 +1,11 @@
 package ee.unapuu.herman.puzzlealarmclock.alarmtypes;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,7 +44,7 @@ public class TrueOrFalseActivity extends AlarmActivity {
         initialiseQuestions();
         chooseRandomQuestion();
 
-        playAlarm();
+        startAudioResource(R.raw.shakeshakeshake);
     }
 
 
@@ -70,7 +66,7 @@ public class TrueOrFalseActivity extends AlarmActivity {
         correctAnswer = statementAnswerPairs.get(randomStatement);
 
         Log.d("nul", randomStatement);
-            statementText.setText(randomStatement);
+        statementText.setText(randomStatement);
 
     }
 
@@ -79,34 +75,26 @@ public class TrueOrFalseActivity extends AlarmActivity {
             case R.id.trueButton:
                 Log.d("id", "true got pressed");
                 if (correctAnswer == Boolean.TRUE) {
-                    Toast.makeText(this, "yes this is correct", Toast.LENGTH_SHORT).show();
                     stopAlarmSuccessfully();
                 } else {
-                    Toast.makeText(this, "you dun goofd", Toast.LENGTH_SHORT).show();
-stopAlarmWithPenalty();
+                    stopAlarmWithPenalty();
                 }
                 break;
             case R.id.falseButton:
                 Log.d("id", "false got pressed");
                 if (correctAnswer == Boolean.FALSE) {
-                    Toast.makeText(this, "yes this is correct", Toast.LENGTH_SHORT).show();
                     stopAlarmSuccessfully();
                 } else {
-                    Toast.makeText(this, "you dun goofd", Toast.LENGTH_SHORT).show();
-stopAlarmWithPenalty();
+                    stopAlarmWithPenalty();
                 }
                 break;
 
         }
     }
 
-    private void playAlarm() {
-        //play the alarm infinitely
-    }
-
-
     private void stopAlarmSuccessfully() {
         //stop the audio
+        stopAudioResource();
 
         //maybe start new intent with text like "Have a nice day!" and with a beautiful sunshine for n seconds
         Intent i = new Intent(this, AlarmEndActivity.class);
@@ -115,6 +103,7 @@ stopAlarmWithPenalty();
     }
 
     private void stopAlarmWithPenalty() {
+        stopAudioResource();
         Intent i = new Intent(this, PenaltyAlarmActivity.class);
         startActivity(i);
         finish();

@@ -10,7 +10,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -19,6 +18,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmClearingHelper;
+import ee.unapuu.herman.puzzlealarmclock.alarmresult.ScreamingSunActivity;
 import ee.unapuu.herman.puzzlealarmclock.alarmtypes.WalkAroundActivity;
 
 public class MainActivity extends Activity {
@@ -38,8 +38,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         //debugging
-        Intent intent = new Intent(MainActivity.this, WalkAroundActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(MainActivity.this, ScreamingSunActivity.class);
+        startActivity(intent);
 
         alarmTextView = (TextView) findViewById(R.id.alarmTimeDisplay);
         alarmTextView.setText("9:00");

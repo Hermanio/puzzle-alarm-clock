@@ -1,17 +1,17 @@
 package ee.unapuu.herman.puzzlealarmclock.alarmtypes;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 
 import ee.unapuu.herman.puzzlealarmclock.AlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.R;
+import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
 
 /**
  * Created by toks on 26.05.17.
@@ -21,7 +21,6 @@ public class TurnUpTheLightsActivity extends AlarmActivity implements SensorEven
     private SensorManager mSensorManager;
     private Sensor lightSensor;
     private float LIGHT_THRESHOLD = 2500.0f;
-    private MediaPlayer music;
 
 
     @Override
@@ -30,7 +29,7 @@ public class TurnUpTheLightsActivity extends AlarmActivity implements SensorEven
         goFullScreen();
 
         setContentView(R.layout.activity_turn_up_the_lights);
-        playAlarmMusic();
+        startAudioResource(R.raw.shakeshakeshake);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         lightSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
     }
@@ -65,16 +64,12 @@ public class TurnUpTheLightsActivity extends AlarmActivity implements SensorEven
     }
 
     private void stopAlarmSuccessfully() {
-        music.stop();
-        //clear alarms here
-
+        stopAudioResource();
+        Intent i = new Intent(this, AlarmEndActivity.class);
+        startActivity(i);
         finish();
 
     }
 
-    private void playAlarmMusic() {
-        music = MediaPlayer.create(TurnUpTheLightsActivity.this, R.raw.shakeshakeshake);
-        music.setLooping(true);
-        music.start();
-    }
+
 }
