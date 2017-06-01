@@ -1,9 +1,7 @@
 package ee.unapuu.herman.puzzlealarmclock.alarmresult;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
@@ -15,6 +13,9 @@ import ee.unapuu.herman.puzzlealarmclock.R;
  */
 
 public class PenaltyAlarmActivity extends AlarmActivity {
+
+    private final int SOUND_CLIP_PLAY_COUNT = 10;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,6 @@ public class PenaltyAlarmActivity extends AlarmActivity {
                 stopAudioResource();
                 finish();
             }
-        }, 10000);
+        }, mediaPlayer.getDuration() * SOUND_CLIP_PLAY_COUNT);
     }
 }

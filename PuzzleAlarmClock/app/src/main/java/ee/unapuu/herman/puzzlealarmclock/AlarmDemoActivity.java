@@ -19,7 +19,7 @@ import ee.unapuu.herman.puzzlealarmclock.alarmtypes.WhoIsTalkingActivity;
  * Created by toks on 29.05.17.
  */
 
-public class AlarmDemoActivity extends Activity implements View.OnClickListener{
+public class AlarmDemoActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

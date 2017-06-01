@@ -1,6 +1,5 @@
 package ee.unapuu.herman.puzzlealarmclock.alarmtypes;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.SensorManager;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import com.squareup.seismic.ShakeDetector;
 
 import ee.unapuu.herman.puzzlealarmclock.AlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.R;
-import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
 
 /**
  * Created by toks on 26.05.17.
@@ -20,15 +18,14 @@ import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
 
 public class ShakeShakeShakeActivity extends AlarmActivity implements ShakeDetector.Listener {
 
+    private final int SHAKE_TARGET = 10;
     private TextView shakeMeTextView;
     private int shakeCount = 0;
-    private final int SHAKE_TARGET = 10;
-
     private ShakeDetector sd;
 
 
-
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         goFullScreen();
 
@@ -59,6 +56,7 @@ public class ShakeShakeShakeActivity extends AlarmActivity implements ShakeDetec
     public void hearShake() {
         shakeCount++;
         if (shakeCount >= SHAKE_TARGET) {
+            sd.stop();
             stopAlarmSuccessfully();
         } else {
             progressAnimation();
@@ -66,19 +64,9 @@ public class ShakeShakeShakeActivity extends AlarmActivity implements ShakeDetec
     }
 
     public void progressAnimation() {
-        getWindow().getDecorView().setBackgroundColor(Color.rgb(255, 255-(25*shakeCount), 255-(25*shakeCount)));
-        shakeMeTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 36 + shakeCount*3);
-        shakeMeTextView.getAnimation().setDuration(500/(shakeCount+1));
-    }
-
-    private void stopAlarmSuccessfully() {
-stopAudioResource();        //clear alarms here
-
-        sd.stop();
-
-        Intent i = new Intent(this, AlarmEndActivity.class);
-        startActivity(i);
-        finish();
+        getWindow().getDecorView().setBackgroundColor(Color.rgb(255, 255 - (25 * shakeCount), 255 - (25 * shakeCount)));
+        shakeMeTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 36 + shakeCount * 3);
+        shakeMeTextView.getAnimation().setDuration(500 / (shakeCount + 1));
     }
 
 

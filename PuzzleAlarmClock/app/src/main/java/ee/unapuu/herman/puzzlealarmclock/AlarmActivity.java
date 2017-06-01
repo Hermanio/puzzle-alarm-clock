@@ -2,6 +2,7 @@ package ee.unapuu.herman.puzzlealarmclock;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -15,6 +16,9 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.Random;
+
+import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
+import ee.unapuu.herman.puzzlealarmclock.alarmresult.PenaltyAlarmActivity;
 
 /**
  * Created by toks on 30.05.17.
@@ -52,7 +56,7 @@ public class AlarmActivity extends Activity {
         if (mediaPlayer == null) {
             mediaPlayer = new MediaPlayer();
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
-           // mediaPlayer = MediaPlayer.create(this, audioResourceId);
+            // mediaPlayer = MediaPlayer.create(this, audioResourceId);
 
             mediaPlayer.setLooping(true);
             try {
@@ -72,7 +76,9 @@ public class AlarmActivity extends Activity {
     }
 
     public void stopAudioResource() {
-        mediaPlayer.stop();
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+        }
         mediaPlayer = null;
     }
 
@@ -82,8 +88,8 @@ public class AlarmActivity extends Activity {
         final Handler h = new Handler();
         final int delay = 100; //milliseconds
 
-        h.postDelayed(new Runnable(){
-            public void run(){
+        h.postDelayed(new Runnable() {
+            public void run() {
                 AudioManager am = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
                 am.setStreamVolume(AudioManager.STREAM_ALARM, am.getStreamMaxVolume(AudioManager.STREAM_ALARM), 0);
                 h.postDelayed(this, delay);
@@ -92,8 +98,22 @@ public class AlarmActivity extends Activity {
     }
 
     public int getGenericAudioResource() {
-        int[] audioTracks = {R.raw.nuke, R.raw.deathmetal, R.raw.shinealightloop};
+        int[] audioTracks = {R.raw.nuke, R.raw.deathmetal};
         int index = new Random().nextInt(audioTracks.length);
         return audioTracks[index];
+    }
+
+    public void stopAlarmSuccessfully() {
+        stopAudioResource();
+        Intent i = new Intent(this, AlarmEndActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    public void stopAlarmWithPenalty() {
+        stopAudioResource();
+        Intent i = new Intent(this, PenaltyAlarmActivity.class);
+        startActivity(i);
+        finish();
     }
 }

@@ -1,7 +1,6 @@
 package ee.unapuu.herman.puzzlealarmclock.alarmtypes;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 
 import ee.unapuu.herman.puzzlealarmclock.AlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.R;
-import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
 
 /**
  * Created by toks on 26.05.17.
@@ -51,7 +49,7 @@ public class TurnUpTheLightsActivity extends AlarmActivity implements SensorEven
         } else {
             adjustedLightValue = Math.round(lightSensorReading / 10);
             viewLayout.setBackgroundColor(Color.rgb(adjustedLightValue, adjustedLightValue, adjustedLightValue));
-            shineALightTextView.setTextColor(Color.rgb(255-adjustedLightValue,255-adjustedLightValue,255-adjustedLightValue));
+            shineALightTextView.setTextColor(Color.rgb(255 - adjustedLightValue, 255 - adjustedLightValue, 255 - adjustedLightValue));
         }
 
     }
@@ -73,14 +71,6 @@ public class TurnUpTheLightsActivity extends AlarmActivity implements SensorEven
         // Be sure to unregister the sensor when the activity pauses.
         super.onPause();
         mSensorManager.unregisterListener(this);
-    }
-
-    private void stopAlarmSuccessfully() {
-        stopAudioResource();
-        Intent i = new Intent(this, AlarmEndActivity.class);
-        startActivity(i);
-        finish();
-
     }
 
 

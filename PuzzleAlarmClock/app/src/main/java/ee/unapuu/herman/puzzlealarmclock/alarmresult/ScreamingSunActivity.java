@@ -1,13 +1,9 @@
 package ee.unapuu.herman.puzzlealarmclock.alarmresult;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import ee.unapuu.herman.puzzlealarmclock.AlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.R;
@@ -17,7 +13,8 @@ import ee.unapuu.herman.puzzlealarmclock.R;
  */
 
 public class ScreamingSunActivity extends AlarmActivity {
-    private static int SCREAMING_SUN_DURATION = 10000;
+    private final int SOUND_CLIP_PLAY_COUNT = 3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +32,6 @@ public class ScreamingSunActivity extends AlarmActivity {
                 AlarmClearingHelper.clearAlarmEvents(getApplicationContext());
                 finish();
             }
-        }, SCREAMING_SUN_DURATION);
+        }, mediaPlayer.getDuration() * SOUND_CLIP_PLAY_COUNT);
     }
 }

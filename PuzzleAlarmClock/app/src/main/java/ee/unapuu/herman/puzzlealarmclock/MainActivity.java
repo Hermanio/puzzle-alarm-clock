@@ -19,8 +19,6 @@ import java.util.Calendar;
 
 import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmClearingHelper;
 import ee.unapuu.herman.puzzlealarmclock.alarmresult.PenaltyAlarmActivity;
-import ee.unapuu.herman.puzzlealarmclock.alarmresult.ScreamingSunActivity;
-import ee.unapuu.herman.puzzlealarmclock.alarmtypes.WalkAroundActivity;
 
 public class MainActivity extends Activity {
 

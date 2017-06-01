@@ -1,6 +1,5 @@
 package ee.unapuu.herman.puzzlealarmclock.alarmtypes;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.util.Log;
@@ -13,8 +12,6 @@ import java.util.Random;
 
 import ee.unapuu.herman.puzzlealarmclock.AlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.R;
-import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
-import ee.unapuu.herman.puzzlealarmclock.alarmresult.PenaltyAlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.misc.OnSwipeListener;
 
 /**
@@ -24,9 +21,8 @@ import ee.unapuu.herman.puzzlealarmclock.misc.OnSwipeListener;
 public class SwipingActivity extends AlarmActivity implements View.OnTouchListener {
     private final String TAG = "test";
     private final int SWIPE_ACTION_THRESHOLD = 10;
-    private String nextSwipeAction;
     private final String[] swipeDirections = {"up", "down", "left", "right"};
-
+    private String nextSwipeAction;
     private int correctSwipeCounter = 0;
 
     private ConstraintLayout activityLayout;
@@ -100,7 +96,7 @@ public class SwipingActivity extends AlarmActivity implements View.OnTouchListen
         }
     }
 
-    private void  setNextSwipeAction() {
+    private void setNextSwipeAction() {
 
         Random random = new Random();
         int choiceIndex = random.nextInt(swipeDirections.length);
@@ -109,20 +105,6 @@ public class SwipingActivity extends AlarmActivity implements View.OnTouchListen
         directionTextView.setText(nextSwipeAction);
     }
 
-    private void stopAlarmSuccessfully() {
-        stopAudioResource();
-
-        Intent i = new Intent(this, AlarmEndActivity.class);
-        startActivity(i);
-        finish();
-    }
-
-    private void stopAlarmWithPenalty() {
-        stopAudioResource();
-        Intent i = new Intent(this, PenaltyAlarmActivity.class);
-        startActivity(i);
-        finish();
-    }
 
     private void animateResult(Boolean isCorrect) {
         if (isCorrect) {

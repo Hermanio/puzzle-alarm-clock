@@ -26,7 +26,7 @@ public class AlarmClearingHelper {
     }
 
     public static void clearAlarmEvents(Context context) {
-        AlarmManager alarmMgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+        AlarmManager alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmTarget.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 

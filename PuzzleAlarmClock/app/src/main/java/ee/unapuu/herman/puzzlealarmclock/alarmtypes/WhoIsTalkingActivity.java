@@ -11,7 +11,6 @@ import java.util.Random;
 
 import ee.unapuu.herman.puzzlealarmclock.AlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.R;
-import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
 import ee.unapuu.herman.puzzlealarmclock.alarmresult.ScreamingSunActivity;
 
 /**
@@ -26,6 +25,7 @@ public class WhoIsTalkingActivity extends AlarmActivity {
     private ImageView mortyImage;
     private TextView headingText;
     private ImageView screamingSunImage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +37,7 @@ public class WhoIsTalkingActivity extends AlarmActivity {
 
         headingText = (TextView) findViewById(R.id.rickormortyTitle);
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
 
             generateCorrectAnswer();
 
@@ -75,7 +75,6 @@ public class WhoIsTalkingActivity extends AlarmActivity {
         }
 
     }
-
 
 
     private void generateCorrectAnswer() {
@@ -121,15 +120,6 @@ public class WhoIsTalkingActivity extends AlarmActivity {
         });
         dialog.start();*/
     }
-
-    private void stopAlarmSuccessfully() {
-        stopAudioResource();
-        //clear alarms here
-        Intent i = new Intent(this, AlarmEndActivity.class);
-        startActivity(i);
-        finish();
-    }
-
 
 
     public void handleChoice(View view) {

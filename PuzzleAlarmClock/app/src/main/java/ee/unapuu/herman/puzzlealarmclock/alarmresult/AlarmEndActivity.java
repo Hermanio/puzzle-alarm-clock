@@ -1,6 +1,5 @@
 package ee.unapuu.herman.puzzlealarmclock.alarmresult;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -18,6 +17,7 @@ public class AlarmEndActivity extends AlarmActivity {
         goFullScreen();
         setContentView(R.layout.activity_alarm_end);
 
+        startAudioResource(R.raw.haveaniceday);
         AlarmClearingHelper.clearAlarm(getApplicationContext());
         AlarmClearingHelper.clearAlarmEvents(getApplicationContext());
 
@@ -26,8 +26,9 @@ public class AlarmEndActivity extends AlarmActivity {
 
         handler.postDelayed(new Runnable() {
             public void run() {
+                stopAudioResource();
                 finish();
             }
-        }, 2000);
+        }, mediaPlayer.getDuration());
     }
 }

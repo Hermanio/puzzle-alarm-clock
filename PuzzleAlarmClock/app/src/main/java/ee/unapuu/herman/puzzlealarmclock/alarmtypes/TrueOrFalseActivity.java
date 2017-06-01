@@ -1,6 +1,5 @@
 package ee.unapuu.herman.puzzlealarmclock.alarmtypes;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,14 +13,14 @@ import java.util.Random;
 
 import ee.unapuu.herman.puzzlealarmclock.AlarmActivity;
 import ee.unapuu.herman.puzzlealarmclock.R;
-import ee.unapuu.herman.puzzlealarmclock.alarmresult.AlarmEndActivity;
-import ee.unapuu.herman.puzzlealarmclock.alarmresult.PenaltyAlarmActivity;
 
 /**
  * Created by toks on 28.05.17.
  */
 
 public class TrueOrFalseActivity extends AlarmActivity {
+    private final int CORRECT_ANSWER_THRESHOLD = 4;
+    private int correctAnswerCount = 0;
     private TextView statementText;
     private Button trueButton;
     private Button falseButton;
@@ -74,39 +73,27 @@ public class TrueOrFalseActivity extends AlarmActivity {
         switch (view.getId()) {
             case R.id.trueButton:
                 Log.d("id", "true got pressed");
-                if (correctAnswer == Boolean.TRUE) {
-                    stopAlarmSuccessfully();
-                } else {
-                    stopAlarmWithPenalty();
-                }
+                handleScoring(correctAnswer, Boolean.TRUE);
                 break;
             case R.id.falseButton:
                 Log.d("id", "false got pressed");
-                if (correctAnswer == Boolean.FALSE) {
-                    stopAlarmSuccessfully();
-                } else {
-                    stopAlarmWithPenalty();
-                }
+                handleScoring(correctAnswer, Boolean.FALSE);
                 break;
-
         }
     }
 
-    private void stopAlarmSuccessfully() {
-        //stop the audio
-        stopAudioResource();
-
-        //maybe start new intent with text like "Have a nice day!" and with a beautiful sunshine for n seconds
-        Intent i = new Intent(this, AlarmEndActivity.class);
-        startActivity(i);
-        finish();
+    public void handleScoring(Boolean correct, Boolean userInput) {
+        if (correct == userInput) {
+            correctAnswerCount++;
+            if (correctAnswerCount >= CORRECT_ANSWER_THRESHOLD) {
+                stopAlarmSuccessfully();
+            } else {
+                chooseRandomQuestion();
+            }
+        } else {
+            stopAlarmWithPenalty();
+        }
     }
 
-    private void stopAlarmWithPenalty() {
-        stopAudioResource();
-        Intent i = new Intent(this, PenaltyAlarmActivity.class);
-        startActivity(i);
-        finish();
-    }
 
 }

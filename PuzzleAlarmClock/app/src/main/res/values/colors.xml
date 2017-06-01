@@ -17,6 +17,8 @@
     <color name="unacceptableBackground">#ffea00</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="trueAnswer">#00c853</color>
+    <color name="falseAnswer">#d50000</color>
 
 
 </resources>
