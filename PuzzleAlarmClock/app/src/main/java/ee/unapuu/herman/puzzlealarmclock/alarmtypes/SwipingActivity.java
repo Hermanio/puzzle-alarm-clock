@@ -24,6 +24,8 @@ public class SwipingActivity extends AlarmActivity implements View.OnTouchListen
     private final String[] swipeDirections = {"up", "down", "left", "right"};
     private String nextSwipeAction;
     private int correctSwipeCounter = 0;
+    private int incorrectSwipeCounter = 0;
+
 
     private ConstraintLayout activityLayout;
     private GestureDetector gestureDetector;
@@ -87,7 +89,8 @@ public class SwipingActivity extends AlarmActivity implements View.OnTouchListen
             }
 
         } else {
-            if (correctSwipeCounter <= -SWIPE_ACTION_THRESHOLD) {
+            incorrectSwipeCounter++;
+            if (incorrectSwipeCounter >= 3) {
                 stopAlarmWithPenalty();
             }
             animateResult(false);

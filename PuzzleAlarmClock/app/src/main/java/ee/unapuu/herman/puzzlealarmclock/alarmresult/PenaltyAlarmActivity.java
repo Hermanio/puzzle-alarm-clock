@@ -14,7 +14,7 @@ import ee.unapuu.herman.puzzlealarmclock.R;
 
 public class PenaltyAlarmActivity extends AlarmActivity {
 
-    private final int SOUND_CLIP_PLAY_COUNT = 10;
+    private final int PENALTY_TIME_IN_MILLIS = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,6 @@ public class PenaltyAlarmActivity extends AlarmActivity {
                 stopAudioResource();
                 finish();
             }
-        }, mediaPlayer.getDuration() * SOUND_CLIP_PLAY_COUNT);
+        }, PENALTY_TIME_IN_MILLIS);
     }
 }

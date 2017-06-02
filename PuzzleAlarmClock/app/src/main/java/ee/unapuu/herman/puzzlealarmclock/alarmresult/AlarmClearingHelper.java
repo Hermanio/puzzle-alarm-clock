@@ -32,8 +32,6 @@ public class AlarmClearingHelper {
 
         try {
             alarmMgr.cancel(pendingIntent);
-            alarmMgr.cancel(pendingIntent);
-
         } catch (Exception e) {
             Log.e("cancel", "AlarmManager update was not canceled. " + e.toString());
         }

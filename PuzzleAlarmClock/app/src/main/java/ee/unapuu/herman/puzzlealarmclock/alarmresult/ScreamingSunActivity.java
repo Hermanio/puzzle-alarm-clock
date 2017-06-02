@@ -13,7 +13,7 @@ import ee.unapuu.herman.puzzlealarmclock.R;
  */
 
 public class ScreamingSunActivity extends AlarmActivity {
-    private final int SOUND_CLIP_PLAY_COUNT = 3;
+    private final int PENALTY_TIME_IN_MILLIS = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,6 @@ public class ScreamingSunActivity extends AlarmActivity {
                 AlarmClearingHelper.clearAlarmEvents(getApplicationContext());
                 finish();
             }
-        }, mediaPlayer.getDuration() * SOUND_CLIP_PLAY_COUNT);
+        }, PENALTY_TIME_IN_MILLIS);
     }
 }
