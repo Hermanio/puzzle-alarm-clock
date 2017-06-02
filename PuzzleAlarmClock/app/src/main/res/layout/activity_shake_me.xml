@@ -14,7 +14,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="Shake me!"
+        android:text="@string/shake_me"
         android:textColor="@color/primary_text"
         android:textSize="36sp"
         android:textStyle="bold"

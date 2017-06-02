@@ -30,7 +30,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:background="@color/primary_light"
-        android:text="statement area"
+        android:text="@string/statement_area"
         android:textAlignment="center"
         android:textColor="@color/primary_text"
         android:textSize="36sp"
@@ -62,7 +62,7 @@
             android:layout_weight="1"
             android:background="@color/trueAnswer"
             android:onClick="handleAnswer"
-            android:text="Tru"
+            android:text="@string/tru"
             android:textColor="@color/primary_text"
             android:textSize="36sp" />
 
@@ -75,7 +75,7 @@
             android:background="@color/falseAnswer"
 
             android:onClick="handleAnswer"
-            android:text="Falsh"
+            android:text="@string/falsh"
             android:textColor="@color/primary_text"
             android:textSize="36sp" />
     </LinearLayout>

@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Alarmify</string>
+    <string name="alarm_end">Alarm end</string>
+    <string name="penalty_alarm_end">Penalty alarm end</string>
+    <string name="alt_penalty_alarm_end">Alt penalty alarm end</string>
+    <string name="shake">Shake</string>
+    <string name="swipe">Swipe</string>
+    <string name="tru_or_fals">Tru or Fals</string>
+    <string name="turn_up_the_lights">Turn up the lights</string>
+    <string name="walk_around">Walk around</string>
+    <string name="rick_or_morty">Rick OR Morty?</string>
+    <string name="have_a_nice_day">Have a nice day!</string>
+    <string name="no_alarm_set">No alarm set!</string>
+    <string name="alarm_status">Alarm status:</string>
+    <string name="unacceptable">UNACCEPTABLE!</string>
+    <string name="shake_me">Shake me!</string>
+    <string name="swipe_direction">swipe direction</string>
+    <string name="swipe_title">Swipe…</string>
+    <string name="statement_area">statement area</string>
+    <string name="tru">Tru</string>
+    <string name="falsh">Falsh</string>
+    <string name="shine_a_light">Shine a light!</string>
+    <string name="move_your_feet">MOVE YOUR FEET!</string>
+    <string name="in_other_words_just_go_walk_for_a_while">In other words, just go walk for a while.</string>
+    <string name="rick_or_morty_title">Rick OR Morty?</string>
 </resources>

@@ -50,7 +50,7 @@
                 android:background="@color/primary_light"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Alarm end"
+                android:text="@string/alarm_end"
                 android:textColor="@color/primary_text" />
 
             <Button
@@ -62,7 +62,7 @@
                 android:background="@color/primary_light"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Penalty alarm end"
+                android:text="@string/penalty_alarm_end"
                 android:textColor="@color/primary_text" />
 
             <Button
@@ -74,7 +74,7 @@
                 android:background="@color/primary_light"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Alt penalty alarm end"
+                android:text="@string/alt_penalty_alarm_end"
                 android:textColor="@color/primary_text" />
         </LinearLayout>
 
@@ -93,7 +93,7 @@
                 android:background="@color/primary_light"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Shake"
+                android:text="@string/shake"
                 android:textColor="@color/primary_text" />
 
             <Button
@@ -105,7 +105,7 @@
                 android:background="@color/primary_light"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Swipe"
+                android:text="@string/swipe"
                 android:textColor="@color/primary_text" />
 
             <Button
@@ -117,7 +117,7 @@
                 android:background="@color/primary_light"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Tru or Fals"
+                android:text="@string/tru_or_fals"
                 android:textColor="@color/primary_text" />
         </LinearLayout>
 
@@ -136,7 +136,7 @@
                 android:background="@color/primary_light"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Turn up the lights"
+                android:text="@string/turn_up_the_lights"
                 android:textColor="@color/primary_text" />
 
             <Button
@@ -148,7 +148,7 @@
                 android:background="@color/primary_light"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Walk around"
+                android:text="@string/walk_around"
                 android:textColor="@color/primary_text" />
 
             <Button
@@ -160,7 +160,7 @@
                 android:background="@color/primary_light"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Rick OR Morty?"
+                android:text="@string/rick_or_morty"
                 android:textColor="@color/primary_text" />
         </LinearLayout>
 

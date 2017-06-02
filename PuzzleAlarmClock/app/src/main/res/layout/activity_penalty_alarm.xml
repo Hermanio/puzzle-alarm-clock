@@ -9,7 +9,7 @@
         android:id="@+id/wrongTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="UNACCEPTABLE!"
+        android:text="@string/unacceptable"
         android:textColor="@color/primary_text"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:text="Rick OR Morty?"
+        android:text="@string/rick_or_morty_title"
         android:textColor="@color/primary_text"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
