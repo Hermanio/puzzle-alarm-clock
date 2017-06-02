@@ -25,7 +25,7 @@ public class AlarmTarget extends BroadcastReceiver {
         //clear alarm
         //fire proper intent in switch/case
         Log.d("test", "alarm went off");
-        Toast.makeText(context, "Alarm went off", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "Alarm went off", Toast.LENGTH_SHORT).show();
 
 
         Random random = new Random();

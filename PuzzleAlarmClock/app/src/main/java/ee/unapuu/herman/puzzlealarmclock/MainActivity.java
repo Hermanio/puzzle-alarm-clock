@@ -82,11 +82,11 @@ public class MainActivity extends Activity {
                         public void onClick(DialogInterface dialog, int which) {
                             switch (which) {
                                 case 0:
-                                    Toast.makeText(getApplicationContext(), "clicked 1", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(getApplicationContext(), "clicked 1", Toast.LENGTH_SHORT).show();
                                     openTimePicker(view);
                                     break;
                                 case 1:
-                                    Toast.makeText(getApplicationContext(), "clicked 2", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(getApplicationContext(), "clicked 2", Toast.LENGTH_SHORT).show();
                                     AlarmClearingHelper.clearAlarm(getApplicationContext());
                                     AlarmClearingHelper.clearAlarmEvents(getApplicationContext());
                                     updateAlarmInfo();
