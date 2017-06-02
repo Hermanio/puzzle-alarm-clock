@@ -21,6 +21,8 @@ public class PenaltyAlarmActivity extends AlarmActivity {
         super.onCreate(savedInstanceState);
         goFullScreen();
         setContentView(R.layout.activity_penalty_alarm);
+        isAlarmView = false;
+
 
         TextView wrongText = (TextView) findViewById(R.id.wrongTextView);
         wrongText.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.unacceptable_shake_animation));

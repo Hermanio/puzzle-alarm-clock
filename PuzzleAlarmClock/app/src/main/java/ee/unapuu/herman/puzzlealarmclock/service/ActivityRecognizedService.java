@@ -18,7 +18,7 @@ import java.util.List;
 public class ActivityRecognizedService extends IntentService {
 
     public static final String WALKING_DETECTED = "ee.unapuu.herman.puzzlealarmclock.service.walking.DETECTED";
-    private final int ACTIVITY_THRESHOLD = 1; //confidence rating limit
+    private final int ACTIVITY_THRESHOLD = 25; //confidence rating limit
     private boolean ignoreFutureResults = false;
     private Context applicationContext;
 

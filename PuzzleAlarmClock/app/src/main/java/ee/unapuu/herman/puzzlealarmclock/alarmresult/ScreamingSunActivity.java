@@ -15,11 +15,14 @@ import ee.unapuu.herman.puzzlealarmclock.R;
 public class ScreamingSunActivity extends AlarmActivity {
     private final int PENALTY_TIME_IN_MILLIS = 5000;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         goFullScreen();
         setContentView(R.layout.activity_screaming_sun);
+        isAlarmView = false;
+
 
         startAudioResource(R.raw.screamingsun);
 

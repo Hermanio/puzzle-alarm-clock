@@ -26,6 +26,7 @@ import ee.unapuu.herman.puzzlealarmclock.alarmresult.PenaltyAlarmActivity;
 
 public class AlarmActivity extends Activity {
     public static MediaPlayer mediaPlayer;
+    public boolean isAlarmView = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,10 +36,10 @@ public class AlarmActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        //moveTaskToBack(true);
-        Toast.makeText(this, "oh no you aint quittin me", Toast.LENGTH_SHORT).show();
+        if (isAlarmView) {
+            stopAlarmWithPenalty();
+        }
     }
-
 
     protected void goFullScreen() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -63,7 +64,6 @@ public class AlarmActivity extends Activity {
                 mediaPlayer.setDataSource(getApplicationContext(), Uri.parse("android.resource://ee.unapuu.herman.puzzlealarmclock/" + audioResourceId));
                 mediaPlayer.prepare();
             } catch (IOException e) {
-                Log.d("test", "URI fucked up");
                 e.printStackTrace();
             }
         }

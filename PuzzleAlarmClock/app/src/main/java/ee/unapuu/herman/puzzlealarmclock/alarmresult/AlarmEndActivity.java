@@ -11,11 +11,13 @@ import ee.unapuu.herman.puzzlealarmclock.R;
  */
 
 public class AlarmEndActivity extends AlarmActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         goFullScreen();
         setContentView(R.layout.activity_alarm_end);
+        isAlarmView = false;
 
         startAudioResource(R.raw.haveaniceday);
         AlarmClearingHelper.clearAlarm(getApplicationContext());
