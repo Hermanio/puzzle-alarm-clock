@@ -47,7 +47,6 @@ public class ShakeShakeShakeActivity extends AlarmActivity implements ShakeDetec
     }
 
 
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

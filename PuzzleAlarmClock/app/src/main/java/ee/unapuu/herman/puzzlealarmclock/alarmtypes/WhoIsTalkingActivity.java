@@ -24,7 +24,6 @@ public class WhoIsTalkingActivity extends AlarmActivity {
     private ImageView rickImage;
     private ImageView mortyImage;
     private TextView headingText;
-    private ImageView screamingSunImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +32,6 @@ public class WhoIsTalkingActivity extends AlarmActivity {
         setContentView(R.layout.activity_who_is_talking);
         rickImage = (ImageView) findViewById(R.id.rickImageView);
         mortyImage = (ImageView) findViewById(R.id.mortyImageView);
-        screamingSunImage = (ImageView) findViewById(R.id.screamingSunImageView);
-
         headingText = (TextView) findViewById(R.id.rickormortyTitle);
 
         if (savedInstanceState == null) {
@@ -86,39 +83,10 @@ public class WhoIsTalkingActivity extends AlarmActivity {
     }
 
     private void startPenalty() {
-        /*screamingSunImage.setVisibility(View.VISIBLE);
-        screamingSunImage.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.screaming_sun_shake));
-
-        rickImage.clearAnimation();
-        mortyImage.clearAnimation();
-        headingText.clearAnimation();
-        rickImage.setVisibility(View.GONE);
-        mortyImage.setVisibility(View.GONE);
-        headingText.setVisibility(View.GONE);
-*/
-
         stopAudioResource();
         Intent i = new Intent(this, ScreamingSunActivity.class);
         startActivity(i);
         finish();
-        /*dialog.stop();
-        dialog.setLooping(false);
-        dialog = MediaPlayer.create(WhoIsTalkingActivity.this, R.raw.screamingsun);
-        final int[] playCount = {0};
-        dialog.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            int maxPlayCount = 2;
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                if (playCount[0] < maxPlayCount) {
-                    playCount[0]++;
-                    mp.seekTo(0);
-                    mp.start();
-                } else {
-                    stopAlarmSuccessfully();
-                }
-            }
-        });
-        dialog.start();*/
     }
 
 

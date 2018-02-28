@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:drawable="@color/splashBackground"/>
+    <item android:drawable="@color/splashBackground" />
 
-    <item
-        >
+    <item>
         <bitmap
             android:gravity="center"
 
-            android:src="@drawable/splashlogo"/>
+            android:src="@drawable/splashlogo" />
         <!-- icon designed by Freepik from Flaticon -->
     </item>
 
