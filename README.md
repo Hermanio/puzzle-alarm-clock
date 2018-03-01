@@ -3,6 +3,8 @@ An alarm clock that requires you to do different tasks in order to shut it off.
 If you fail, then you will be presented with very *pleasant* sounds
 
 Final project for the course *Mobile applications (ITV0140)*.
+
+![compilation gif](https://github.com/Hermanio/puzzle-alarm-clock/blob/master/demo/compilation.gif)
 # Features
 Things you have to do:
 * point the phone at a light source
